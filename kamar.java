@@ -1,6 +1,6 @@
 package OOP_UAS;
 
-class kamar {
+public class Kamar {
     private String JenKamar;
     private double JumKamar;
 
@@ -16,7 +16,7 @@ class kamar {
         this.JumKamar = JumKamar;
     }
 
-    public double JumKamar(){
+    public double getJumKamar(){
         return JumKamar;
     }
 }

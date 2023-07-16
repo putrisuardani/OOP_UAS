@@ -1,7 +1,7 @@
 package OOP_UAS;
 
-class tamu {
-  private String Nama;
+public class Tamu {
+    private String Nama;
   private double jumlahTamu;
 
 
