@@ -45,7 +45,7 @@ public class Proses {
     private Tamu getNamaTamu(String guestName){
         try{
         for(Tamu tamu : this.guest){
-            if(tamu.getId().equals(guestName)){
+            if(tamu.getNama().equals(guestName)){
             return tamu;
             }
         }
