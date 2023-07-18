@@ -57,12 +57,12 @@ public class Proses {
 
     // menghapus data tamu dari arrayList apabila Check Out
     public void removeTamu(String guestId, String guestName){
-        Tamu tamuId = this.getTamuId(guestId);
-        Tamu tamuNama = this.getNamaTamu(guestName);
-        if (tamuId == null || tamuNama == null) {
+        Tamu tamu = this.getTamuId(guestId);
+
+        if (!guestId.equals(tamu.getId()) || !guestName.equals(tamu.getNama())) {
             System.out.println("Guest Id atau nama tamu salah");
         } else {
-            this.guest.remove(tamuId);
+            this.guest.remove(tamu);
             System.out.println("Tamu berhasil Check Out");
         }
     }
