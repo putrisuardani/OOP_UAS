@@ -2,30 +2,29 @@ package OOP_UAS;
 
 public class Suite extends Additional implements Pilihan {
     private Tamu guest;
-    private Kamar room;
 
     public Suite(Tamu guest) {
         this.guest = guest;
     }
 
-    public Suite(Kamar room) {
-        this.room = room;
-    }
-
     @Override
     public void fasilitas() {
+        System.out.println("==============================================================");
+        System.out.println("SUITE ROOM");
+        System.out.println("==============================================================");
         System.out.println("Fasilitas   :");
         System.out.println("1. Room Size 29 sqm ");
         System.out.println("2. King Bed or Twin Beds");
         System.out.println("3. Balcony with Beach View");
         System.out.println("4. Free 2 packs of Breakfast");
         System.out.println("5. Bathtub in the Balcony with Cold and Hot Running Water");
+        System.out.println("Price : Rp.1,000,000.00");
 
     }
 
     @Override
     public double harga() {
-        return 1000000*room.getJumKamar();
+        return 1000000*guest.getJumKamar();
     }
 
     @Override
@@ -33,10 +32,9 @@ public class Suite extends Additional implements Pilihan {
         System.out.println("===================================================================");
         System.out.println("-------------------------Oceanlux Resort---------------------------");
         System.out.println("===================================================================");
-        System.out.println("Guest Name      : " + guest.getNama());
-        System.out.println("Jumlah Tamu     : " + guest.getjumlahTamu());
-        System.out.println("Jenis Kamar     : " +room.getJenKamar());
-        System.out.println("Jumlah Kamar    : " +room.getJumKamar());
+        System.out.println("Guest Name      : " +guest.getNama());
+        System.out.println("Jenis Kamar     : " +guest.getJenKamar());
+        System.out.println("Jumlah Kamar    : " +guest.getJumKamar());
         System.out.println("Total Harga     : "+harga());
     }
 

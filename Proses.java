@@ -2,64 +2,68 @@ package OOP_UAS;
 import java.util.ArrayList;
 
 public class Proses {
-    public ArrayList<Kamar> standard = new ArrayList<Kamar>();
-    public ArrayList<Kamar> deluxe = new ArrayList<Kamar>();
-    public ArrayList<Kamar> suite = new ArrayList<Kamar>();
     public ArrayList<Tamu> guest = new ArrayList<Tamu>();
+    // menyimpan daftar objek Tamu
+    
+    // memeriksa keberadaan Guest Id
+    public boolean isGuestIdExist(String id){
+        boolean isExist = false;
+        for (Tamu tamu : this.guest){
+            if(tamu.getId().equals(id)){
+                System.out.println("Guest Id telah digunakan");
+                isExist = true;
+            }
+        }
+        return isExist;
+    }
 
+    // menambahkan tamu ke arrayList
     public void addTamu(Tamu tamu){
-        this.guest.add(tamu);
-    }
-
-    public void addStandard(Kamar kamar){
-    try{
-    
-        if (standard.size() < 5) {
-            standard.add(kamar);
+        if(!isGuestIdExist(tamu.getId())){
+            this.guest.add(tamu);
+            System.out.println("Tamu berhasil Check In");
+        }else{
+            System.out.println("Silahkan pilih menu no 2 dan lakukan pengisian kembali ");
         }
-    
-    }catch (Exception e){
-        System.out.println("Sorry, the Standard Room has been sold out");
-    }
     }
 
-    public void addDeluxe(Kamar kamar){
-    try{
-    
-        if (deluxe.size() < 5) {
-            deluxe.add(kamar);
-        }
-    
-    }catch (Exception e){
-        System.out.println("Sorry, the Deluxe Room has been sold out");
-    }
-}
-
-    public void addSuite(Kamar kamar){
+    // Memeriksa apakah tamu terdapat di dalam sistem hotel
+    private Tamu getTamuId(String guestId){
         try{
-    
-        if (suite.size() < 5) {
-            suite.add(kamar);
+        for(Tamu tamu : this.guest){
+            if(tamu.getId().equals(guestId)){
+            return tamu;
+            }
         }
-    
-    }catch (Exception e){
-        System.out.println("Sorry, the Suite Room has been sold out");
-    }
-    }
-
-    public void removeTamu(Tamu tamu){
-        this.guest.remove(tamu);
+        }catch (Exception e){
+            System.out.println("Sorry, the guest is not in house");
+        }
+        return null;
     }
 
-    public void removeStandard(Kamar kamar){
-        this.standard.remove(kamar);
+    //Memeriksa apakah tamu terdapat di dalam sistem hotel
+    private Tamu getNamaTamu(String guestName){
+        try{
+        for(Tamu tamu : this.guest){
+            if(tamu.getId().equals(guestName)){
+            return tamu;
+            }
+        }
+        }catch (Exception e){
+            System.out.println("Sorry, the guest is not in house");
+        }
+        return null;
     }
 
-    public void removeDeluxe(Kamar kamar){
-        this.deluxe.remove(kamar);
-    }
-
-    public void removeSuite(Kamar kamar){
-        this.suite.remove(kamar);
+    // menghapus data tamu dari arrayList apabila Check Out
+    public void removeTamu(String guestId, String guestName){
+        Tamu tamuId = this.getTamuId(guestId);
+        Tamu tamuNama = this.getNamaTamu(guestName);
+        if (tamuId == null || tamuNama == null) {
+            System.out.println("Guest Id atau nama tamu salah");
+        } else {
+            this.guest.remove(tamuId);
+            System.out.println("Tamu berhasil Check Out");
+        }
     }
 }
